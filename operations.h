@@ -9,7 +9,7 @@ int sum(int n1, int n2); // Сумма
 
 int subst(int n1, int n2); // Вычитание
 
-int percent(int n1, int n2); // Остаток от деления
+int remains(int n1, int n2); // Остаток от деления
 
 int bit_and(int n1, int n2); // Побитовое И
 

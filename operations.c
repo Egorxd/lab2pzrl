@@ -42,7 +42,7 @@ int subst(int n1, int n2)
 	return n1 - n2;
 }
 
-int percent(int n1, int n2)
+int remains(int n1, int n2)
 {
 	return n1 % n2;
 }

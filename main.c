@@ -83,6 +83,139 @@ int main(int argc, char** argv)
 		free(operation);
 		return 1;
 	}
+	
+	if (*operation == '+')
+	{
+		switch(sys(num1))
+		{
+			case 2:
+				bin = dec_to_bin(sum(bin_to_dec(num1), bin_to_dec(num2)));
+				printf("%s \t (%d)\n", bin, sum(bin_to_dec(num1), bin_to_dec(num2)));
+				if (bin[0] != '0')
+				{
+					free(bin);
+					break;
+				}
 
+			case 1:
+				oct = dec_to_oct(sum(oct_to_dec(num1), oct_to_dec(num2)));
+				printf("%s \t (%d)\n", oct, sum(oct_to_dec(num1), oct_to_dec(num2)));
+				free(oct);
+				break;
+
+			case 0:
+				hex = dec_to_hex(sum(hex_to_dec(num1), hex_to_dec(num2)));
+				printf("%s \t (%d)\n", hex, sum(hex_to_dec(num1), hex_to_dec(num2)));
+				free(hex);
+				break;
+		}
+	}
+
+	else if (*operation == '-')
+	{
+		switch(sys(num1))
+		{
+			case 2:
+				bin = dec_to_bin(subst(bin_to_dec(num1), bin_to_dec(num2)));
+				printf("%s \t (%d)\n", bin, subst(bin_to_dec(num1), bin_to_dec(num2)));
+				if (bin[0] != '0')
+				{
+					free(bin);
+					break;
+				}
+
+			case 1:
+				oct = dec_to_oct(subst(oct_to_dec(num1), oct_to_dec(num2)));
+				printf("%s \t (%d)\n", oct, subst(oct_to_dec(num1), oct_to_dec(num2)));
+				free(oct);
+				break;
+
+			case 0:
+				hex = dec_to_hex(subst(hex_to_dec(num1), hex_to_dec(num2)));
+				printf("%s \t (%d)\n", hex, subst(hex_to_dec(num1), hex_to_dec(num2)));
+				free(hex);
+				break;
+		}
+
+	}
+
+	else if (*operation == '*')
+	{
+		switch(sys(num1))
+		{
+			case 2:
+				bin = dec_to_bin(mult(bin_to_dec(num1), bin_to_dec(num2)));
+				printf("%s \t (%d)\n", bin, mult(bin_to_dec(num1), bin_to_dec(num2)));
+				if (bin[0] != '0')
+				{
+					free(bin);
+					break;
+				}
+
+			case 1:
+				oct = dec_to_oct(mult(oct_to_dec(num1), oct_to_dec(num2)));
+				printf("%s \t (%d)\n", oct, mult(oct_to_dec(num1), oct_to_dec(num2)));
+				free(oct);
+				break;
+
+			case 0:
+				hex = dec_to_hex(mult(hex_to_dec(num1), hex_to_dec(num2)));
+				printf("%s \t (%d)\n", hex, mult(hex_to_dec(num1), hex_to_dec(num2)));
+				free(hex);
+				break;
+		}
+
+	}
+
+	else if (*operation == '%')
+	{
+		switch(sys(num1))
+		{
+			case 2:
+				bin = dec_to_bin(remains(bin_to_dec(num1), bin_to_dec(num2)));
+				printf("%s \t (%d)\n", bin, remains(bin_to_dec(num1), bin_to_dec(num2)));
+				if (bin[0] != '0')
+				{
+					free(bin);
+					break;
+				}
+
+			case 1:
+				oct = dec_to_oct(remains(oct_to_dec(num1), oct_to_dec(num2)));
+				printf("%s \t (%d)\n", oct, remains(oct_to_dec(num1), oct_to_dec(num2)));
+				free(oct);
+				break;
+
+			case 0:
+				hex = dec_to_hex(remains(hex_to_dec(num1), hex_to_dec(num2)));
+				printf("%s \t (%d)\n", hex, remains(hex_to_dec(num1), hex_to_dec(num2)));
+				free(hex);
+				break;
+		}
+
+	}
+	
+	else if (*operation == '&')
+	{
+
+	}
+
+	else if (*operation == '|')
+	{
+
+	}
+
+	else if (*operation == '^')
+	{
+
+	}
+
+	else
+		printf("WRONG OPERATION\n");
+
+	free(num1);
+	free(num2);
+	free(input);
+	free(operation);
 	return 0;
 }
