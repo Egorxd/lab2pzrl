@@ -48,7 +48,7 @@ int main(int argc, char** argv)
 		}
 
 		free(input);
-		return 0;
+		exit(0);
 	}
 	
 	char num1_buff[35];
@@ -81,7 +81,7 @@ int main(int argc, char** argv)
 		free(num1);
 		free(num2);
 		free(operation);
-		return 1;
+		exit(0);
 	}
 	
 	if (*operation == '+')

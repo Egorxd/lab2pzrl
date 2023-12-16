@@ -3,7 +3,6 @@
 #include <string.h>
 #include <math.h>
 #include <ctype.h>
-#include "operations.h"
 #include "hex.h"
 
 int hex_to_dec(const char* n)

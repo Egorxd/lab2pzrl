@@ -3,7 +3,6 @@
 #include <string.h>
 #include <math.h>
 #include <ctype.h>
-#include "operations.h"
 #include "oct.h"
 
 int oct_to_dec(const char* n)
