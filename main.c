@@ -54,7 +54,7 @@ int main(int argc, char** argv)
 	char num1_buff[35];
 	char num2_buff[35];
 	char operator_buff[2];
-	sscanf(input, "%35s %1s %35s", num1_buff, operator_buff, num2_buff);
+	sscanf(input, "%35s %2s %35s", num1_buff, operator_buff, num2_buff);
 	
 	num1 = strdup(num1_buff);
 	num2 = strdup(num2_buff);
@@ -197,21 +197,107 @@ int main(int argc, char** argv)
 	
 	else if (*operation == '&')
 	{
+		if (num1[0] != '-' && num2[0] != '-')
+		{
+			switch(sys(num1))
+			{
+				case 2:
+					bin = dec_to_bin(bit_and(bin_to_dec(num1), bin_to_dec(num2)));
+					printf("%s \t (%d)\n", bin, bit_and(bin_to_dec(num1), bin_to_dec(num2)));
+					if (bin[0] != '0')
+						free(bin);
+					break;	
 
+				case 1:
+					oct = dec_to_oct(bit_and(oct_to_dec(num1), oct_to_dec(num2)));
+					printf("%s \t (%d)\n", oct, bit_and(oct_to_dec(num1), oct_to_dec(num2)));
+					free(oct);
+					break;
+
+				case 0:
+					hex = dec_to_hex(bit_and(hex_to_dec(num1), hex_to_dec(num2)));
+					printf("%s \t (%d)\n", hex, bit_and(hex_to_dec(num1), hex_to_dec(num2)));
+					free(hex);
+					break;
+			}
+
+		}
+		else
+		{
+			printf("ERROR: negative numbers entered\n");
+		}
 	}
 
 	else if (*operation == '|')
 	{
+		if (num1[0] != '-' && num2[0] != '-')
+		{
+			switch(sys(num1))
+			{
+				case 2:
+					bin = dec_to_bin(bit_or(bin_to_dec(num1), bin_to_dec(num2)));
+					printf("%s \t (%d)\n", bin, bit_or(bin_to_dec(num1), bin_to_dec(num2)));
+					if (bin[0] != '0')
+						free(bin);
+					break;	
+
+				case 1:
+					oct = dec_to_oct(bit_or(oct_to_dec(num1), oct_to_dec(num2)));
+					printf("%s \t (%d)\n", oct, bit_or(oct_to_dec(num1), oct_to_dec(num2)));
+					free(oct);
+					break;
+
+				case 0:
+					hex = dec_to_hex(bit_or(hex_to_dec(num1), hex_to_dec(num2)));
+					printf("%s \t (%d)\n", hex, bit_or(hex_to_dec(num1), hex_to_dec(num2)));
+					free(hex);
+					break;
+			}
+
+		}
+		else
+		{
+			printf("ERROR: negative numbers entered\n");
+		}
 
 	}
 
 	else if (*operation == '^')
 	{
+		if (num1[0] != '-' && num2[0] != '-')
+		{
+			switch(sys(num1))
+			{
+				case 2:
+					bin = dec_to_bin(bxor(bin_to_dec(num1), bin_to_dec(num2)));
+					printf("%s \t (%d)\n", bin, bxor(bin_to_dec(num1), bin_to_dec(num2)));
+					if (bin[0] != '0')
+						free(bin);
+					break;	
+
+				case 1:
+					oct = dec_to_oct(bit_and(oct_to_dec(num1), oct_to_dec(num2)));
+					printf("%s \t (%d)\n", oct, bxor(oct_to_dec(num1), oct_to_dec(num2)));
+					free(oct);
+					break;
+
+				case 0:
+					hex = dec_to_hex(bxor(hex_to_dec(num1), hex_to_dec(num2)));
+					printf("%s \t (%d)\n", hex, bxor(hex_to_dec(num1), hex_to_dec(num2)));
+					free(hex);
+					break;
+			}
+
+		}
+		else
+		{
+			printf("ERROR: negative numbers entered\n");
+		}
 
 	}
 
 	else
-		printf("WRONG OPERATION\n");
+		printf("ERROR: wrong input or operation\n");
 
 	free(num1);
 	free(num2);
