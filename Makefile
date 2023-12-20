@@ -4,7 +4,7 @@ MO = main.o
 
 all: test
 
-test: main.o operations.o bin.o oct.o hex.o
+test: $(MO) operations.o bin.o oct.o hex.o
 	gcc $(MO) operations.o bin.o oct.o hex.o -o test -lm
 
 $(MO): main.c
