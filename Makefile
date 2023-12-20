@@ -1,11 +1,13 @@
 .PHONY: all clean run
 
+MO = main.o
+
 all: test
 
 test: main.o operations.o bin.o oct.o hex.o
-	gcc main.o operations.o bin.o oct.o hex.o -o test -lm
+	gcc $(MO) operations.o bin.o oct.o hex.o -o test -lm
 
-main.o: main.c
+$(MO): main.c
 	gcc -c main.c
 
 operations.o: operations.c
